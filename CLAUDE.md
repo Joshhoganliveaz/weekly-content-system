@@ -171,56 +171,152 @@ Create a card with:
 
 ## Step 5: Send Gmail Notifications (Gmail MCP)
 
-Send three emails. Include the Live AZ Co HTML signature from the Gmail signature template at the bottom of each email.
+Send three HTML emails. Each email must include the full HTML signature block at the bottom (see Signature section below). Send using the Gmail MCP `send_email` or `draft_email` tool with `is_html: true`.
 
 ### Email to Robyn (robyn@liveazco.com)
 
 - **Subject:** Your content plan for the week is ready
-- **Body:**
 
-  Hey Robyn,
+Build the HTML body using this structure. Replace all `{{placeholder}}` values with actual generated content:
 
-  Your 3 reels for this week are ready on Trello:
-  [Link to Trello card]
+```html
+<div style="font-family: Arial, sans-serif; font-size: 14px; color: #212121; line-height: 1.6; max-width: 600px;">
 
-  Templates this week:
-  1. [Template name] — [one-line hook preview]
-  2. [Template name] — [one-line hook preview]
-  3. [Template name] — [one-line hook preview]
+<p>Hey Robyn,</p>
 
-  Fresh hooks based on what's trending in AZ real estate this week.
-  Check the card for full shot lists and captions.
+<p>Your 3 reels for this week are ready on Trello. I put together hooks based on what's trending in AZ real estate content right now, paired with your playbook templates.</p>
+
+<p><a href="{{ROBYN_TRELLO_CARD_URL}}" style="display: inline-block; background-color: #9A9F84; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 14px;">Open Your Trello Card</a></p>
+
+<table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+  <tr style="background-color: #f8f7f5;">
+    <td style="padding: 10px 12px; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: #7a7a7a; border-bottom: 2px solid #e8e6e1;">Reel</td>
+    <td style="padding: 10px 12px; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: #7a7a7a; border-bottom: 2px solid #e8e6e1;">Template</td>
+    <td style="padding: 10px 12px; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: #7a7a7a; border-bottom: 2px solid #e8e6e1;">Hook Preview</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 12px; border-bottom: 1px solid #e8e6e1;">1</td>
+    <td style="padding: 10px 12px; border-bottom: 1px solid #e8e6e1;">{{REEL_1_TEMPLATE_NAME}}</td>
+    <td style="padding: 10px 12px; border-bottom: 1px solid #e8e6e1; font-style: italic;">"{{REEL_1_HOOK}}"</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 12px; border-bottom: 1px solid #e8e6e1;">2</td>
+    <td style="padding: 10px 12px; border-bottom: 1px solid #e8e6e1;">{{REEL_2_TEMPLATE_NAME}}</td>
+    <td style="padding: 10px 12px; border-bottom: 1px solid #e8e6e1; font-style: italic;">"{{REEL_2_HOOK}}"</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 12px;">3</td>
+    <td style="padding: 10px 12px;">{{REEL_3_TEMPLATE_NAME}}</td>
+    <td style="padding: 10px 12px; font-style: italic;">"{{REEL_3_HOOK}}"</td>
+  </tr>
+</table>
+
+<p style="font-size: 13px; color: #4a4a4a; background: #f8f7f5; padding: 12px 16px; border-radius: 6px;">
+<strong>Trending this week:</strong> {{1_TO_2_SENTENCE_TRENDING_SUMMARY}}
+</p>
+
+<p>Full shot lists, alt hooks, and captions are on the card. Pick a home, grab your phone, and check them off.</p>
+
+{{SIGNATURE}}
+
+</div>
+```
 
 ### Email to Jacqui (Jacqui@liveazco.com)
 
 - **Subject:** Your Gilbert content for the week is ready
-- **Body:**
 
-  Hey Jacqui,
+```html
+<div style="font-family: Arial, sans-serif; font-size: 14px; color: #212121; line-height: 1.6; max-width: 600px;">
 
-  Your content ideas for this week are on Trello:
-  [Link to Trello card]
+<p>Hey Jacqui,</p>
 
-  This week's Gilbert angles:
-  - [Reel idea with hook preview]
-  - [Carousel idea if applicable]
+<p>Your content ideas for this week are on Trello. I pulled hooks from what's performing well in real estate content right now and adapted them for Gilbert.</p>
 
-  Hooks are based on what's working in real estate content right now.
+<p><a href="{{JACQUI_TRELLO_CARD_URL}}" style="display: inline-block; background-color: #9A9F84; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 14px;">Open Your Trello Card</a></p>
+
+<p style="font-weight: bold; margin-bottom: 4px;">This week's Gilbert angles:</p>
+<table style="width: 100%; border-collapse: collapse; margin: 8px 0 16px;">
+  <tr>
+    <td style="padding: 8px 12px; border-bottom: 1px solid #e8e6e1; vertical-align: top; width: 70px; font-weight: bold; color: #9A9F84;">Reel</td>
+    <td style="padding: 8px 12px; border-bottom: 1px solid #e8e6e1;">
+      <strong>{{REEL_TEMPLATE_NAME}}</strong><br>
+      <span style="font-style: italic;">"{{JACQUI_REEL_HOOK}}"</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 12px; vertical-align: top; font-weight: bold; color: #9A9F84;">{{CAROUSEL_OR_REEL}}</td>
+    <td style="padding: 8px 12px;">
+      <strong>{{PIECE_2_TOPIC}}</strong><br>
+      <span style="font-style: italic;">"{{JACQUI_PIECE_2_HOOK}}"</span>
+    </td>
+  </tr>
+</table>
+
+<p>Shot lists, captions, and alt hooks are all on the card. The carousel slides are mapped out if you want to go that route.</p>
+
+{{SIGNATURE}}
+
+</div>
+```
 
 ### Email to Josh (josh@liveazco.com)
 
 - **Subject:** Weekly content cards sent
-- **Body:**
 
-  Robyn received:
-  - 3 reels: [Template 1], [Template 2], [Template 3]
-  - [Link to her card]
+```html
+<div style="font-family: Arial, sans-serif; font-size: 14px; color: #212121; line-height: 1.6; max-width: 600px;">
 
-  Jacqui received:
-  - [Reel + carousel summary]
-  - [Link to her card]
+<p>Here's what went out this week.</p>
 
-  Trending research this week found: [1 to 2 sentence summary]
+<table style="width: 100%; border-collapse: collapse; margin: 12px 0;">
+  <tr style="background-color: #f8f7f5;">
+    <td style="padding: 10px 12px; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: #7a7a7a; border-bottom: 2px solid #e8e6e1;">Person</td>
+    <td style="padding: 10px 12px; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: #7a7a7a; border-bottom: 2px solid #e8e6e1;">Content</td>
+    <td style="padding: 10px 12px; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: #7a7a7a; border-bottom: 2px solid #e8e6e1;">Card</td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 12px; border-bottom: 1px solid #e8e6e1; font-weight: bold;">Robyn</td>
+    <td style="padding: 10px 12px; border-bottom: 1px solid #e8e6e1;">
+      3 reels: {{ROBYN_TEMPLATE_1}}, {{ROBYN_TEMPLATE_2}}, {{ROBYN_TEMPLATE_3}}
+    </td>
+    <td style="padding: 10px 12px; border-bottom: 1px solid #e8e6e1;">
+      <a href="{{ROBYN_TRELLO_CARD_URL}}" style="color: #9A9F84;">View card</a>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 12px; font-weight: bold;">Jacqui</td>
+    <td style="padding: 10px 12px;">
+      {{JACQUI_CONTENT_SUMMARY}}
+    </td>
+    <td style="padding: 10px 12px;">
+      <a href="{{JACQUI_TRELLO_CARD_URL}}" style="color: #9A9F84;">View card</a>
+    </td>
+  </tr>
+</table>
+
+<p style="font-size: 13px; color: #4a4a4a; background: #f8f7f5; padding: 12px 16px; border-radius: 6px;">
+<strong>Research notes:</strong> {{TRENDING_RESEARCH_SUMMARY_2_TO_3_SENTENCES}}
+</p>
+
+<p style="font-size: 13px; color: #4a4a4a;">
+<strong>Templates this week:</strong> Tier 1 {{TIER_1_PAIR_LABEL}} ({{TIER_1_TEMPLATE_A}} + {{TIER_1_TEMPLATE_B}}), Tier 2 {{TIER_2_TEMPLATE}}.<br>
+<strong>Hook source:</strong> {{RESEARCH_OR_FALLBACK_NOTE}}<br>
+<strong>Next rotation:</strong> Tier 1 {{NEXT_TIER_1_PAIR}}, Tier 2 {{NEXT_TIER_2_TEMPLATE}}
+</p>
+
+{{SIGNATURE}}
+
+</div>
+```
+
+### HTML Signature Block
+
+Replace `{{SIGNATURE}}` in every email with this exact HTML. Do not modify it:
+
+```html
+<div dir=ltr><table style=direction:ltr;border-collapse:collapse;><tr><td style=font-size:0;height:12px;line-height:0;></td></tr><tr><td><table cellpadding=0  cellspacing=0  border=0  style=width:100%;  width=100%><tr><td><table cellpadding=0  cellspacing=0  width=100%  style=border-collapse:collapse;width:100%;line-height:normal;><tr><td height=0  style=height:0;font-family:Arial;text-align:left><p style=margin:1px;><img style=height:57px  src=https://d36urhup7zbd7q.cloudfront.net/6727292528492544/5051717338398720/a99a8d7a-0dbf-4613-894d-a67bd759e716/signoff.gif?ck=1722852262.45  alt="Kind regards," height=57></p></td></tr></table></td></tr><tr><td height=0  style=height:0;line-height:1%;padding-top:16px;font-size:1px;></td></tr><tr><td><table cellpadding=0  cellspacing=0  style=border-collapse:collapse;line-height:1.15;><tr><td style="height:1px;width:112px;vertical-align:top;padding:.01px 1px;"><table cellpadding=0  cellspacing=0  style=border-collapse:collapse;><tr><td style="vertical-align:top;padding:.01px 1px 14px 0.01px;width:112px;text-align:center;"><img border=0  src=https://d36urhup7zbd7q.cloudfront.net/u/MwWW4kbK9B8/83443d9d-a195-419e-88ac-b484945ff60b__400x400__.png  height=112  width=112  alt=photo  style=width:112px;vertical-align:middle;border-radius:0;height:112px;border:0;display:block;></td></tr><tr><td style=vertical-align:top;padding:.01px;width:108px;text-align:center;><img border=0  src=https://gifo.srv.wisestamp.com/im/sh/dS9Nd1dXNGtiSzlCOC9mOTZhNDgyNy03MjdiLTQ1NGMtYTQ5My03N2JkYjZlYTc4YzhfXzQwMHgyNTdfXy5wbmcjbG9nbzI=/rounded.png  height=69  width=108  alt=photo  style=width:108px;vertical-align:middle;border-radius:4px;height:69px;border:0;display:block;></td></tr></table></td><td valign=top  style="padding:.01px 0.01px 0.01px 14px;vertical-align:top;"><table cellpadding=0  cellspacing=0  style=border-collapse:collapse;><tr><td style=line-height:line-height:120%;font-size:18px;;padding-bottom:14px;;><p style=margin:.1px;line-height:120%;font-size:18px;><span style=font-family:Arial;font-size:18px;font-weight:bold;color:#9A9F84;letter-spacing:0;white-space:nowrap;>Joshua Hogan</span><br><span style=font-family:Arial;font-size:14px;font-weight:bold;color:#212121;white-space:nowrap;>Team Lead,<span>&nbsp;</span></span><span style=font-family:Arial;font-size:14px;font-weight:bold;color:#212121;white-space:nowrap;>LIVE AZ CO - Real Broker</span></p></td><td style=vertical-align:bottom;><table cellpadding=0  cellspacing=0  style=border-collapse:collapse;  align=right><tr><td height=0  style="padding:.01px 0.01px 14px 50px;"><table border=0  cellpadding=0  cellspacing=0><tr><td align=left  style=padding-right:6px;text-align:center;padding-top:0;><p style=margin:1px;><a href=https://www.instagram.com/joshwillhogan/  target=_blank  rel="nofollow noreferrer"><img width=25  height=25  src=https://gifo.srv.wisestamp.com/s/inst/E4405F/50/0/background.png  style=float:left;border:none;  border=0  alt=instagram  /></a></p></td><td align=left  style=padding-right:6px;text-align:center;padding-top:0;><p style=margin:1px;><a href=https://www.facebook.com/liveazco  target=_blank  rel="nofollow noreferrer"><img width=25  height=25  src=https://gifo.srv.wisestamp.com/s/fb/3b5998/50/0/background.png  style=float:left;border:none;  border=0  alt=facebook  /></a></p></td><td align=left  style=padding-right:6px;text-align:center;padding-top:0;><p style=margin:1px;><a href=https://www.linkedin.com/in/joshwillhogan/  target=_blank  rel="nofollow noreferrer"><img width=25  height=25  src=https://gifo.srv.wisestamp.com/s/ld/0077b5/50/0/background.png  style=float:left;border:none;  border=0  alt=linkedin  /></a></p></td></tr></table></td></tr></table></td></tr><tr><td colspan=2  style="padding:.01px 0.01px 14px 0.01px;border-bottom:solid 1px #9A9F84;border-top:solid 1px #9A9F84;"><table cellpadding=0  cellspacing=0  style=border-collapse:collapse;width:100%;><tr><td nowrap width=358  height=0  style=height:0;padding-top:14px;white-space:nowrap;width:358px;font-family:Arial;><p style=margin:1px;line-height:99%;font-size:12px;><span style=white-space:nowrap;><a href=tel:480-369-2880  target=_blank  style=font-family:Arial;text-decoration:unset;  rel="nofollow noreferrer"><span style=line-height:120%;font-family:Arial;font-size:12px;color-scheme:only;color:#212121;white-space:nowrap;>480-369-2880</span></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=https://LiveAZco.com  target=_blank  style=font-family:Arial;text-decoration:unset;  rel="nofollow noreferrer"><span style=line-height:120%;font-family:Arial;font-size:12px;color-scheme:only;color:#212121;white-space:nowrap;>LiveAZco.com</span></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=mailto:josh@liveazco.com  target=_blank  style=font-family:Arial;text-decoration:unset;  rel="nofollow noreferrer"><span style=line-height:120%;font-family:Arial;font-size:12px;color-scheme:only;color:#212121;white-space:nowrap;>josh@liveazco.com</span></a></span></p></td></tr><tr><td nowrap width=278  height=0  style=height:0;padding-top:8px;white-space:nowrap;width:278px;font-family:Arial;><p style=margin:1px;line-height:99%;font-size:12px;><span style=white-space:nowrap;><a href="https://maps.google.com/?q=2301 S Stearman Dr. Chandler AZ 85286" target=_blank  style=font-family:Arial;text-decoration:unset;  rel="nofollow noreferrer"><span style=line-height:120%;font-family:Arial;font-size:12px;color-scheme:only;color:#212121;white-space:nowrap;>2301 S Stearman Dr. Chandler AZ 85286</span></a></span></p></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr><tr><td style="font-family:'ws-id 79dmoJd41E8Q';font-size:.01px;line-height:0;">&nbsp;</td></tr></table></div>
+```
 
 ---
 
